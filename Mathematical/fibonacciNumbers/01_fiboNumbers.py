@@ -1,3 +1,4 @@
+import math
 # Use Recursion as most basic method
 def fiboRecursive (n):
     if n <= 1:
@@ -52,11 +53,21 @@ def fiboMemoization (n):
     holder[n] = first + second
     return holder[n]
 # ===============================================================================================
+# Using Binet’s formula
+# In this method, we directly implement the formula for the nth term in the Fibonacci series. 
+# Fn = {[(√5 + 1)/2] ^ n} / √5 
+def fiboBinet (n):
+    phi = (math.sqrt(5)+1) / 2
+    return round (math.pow (phi, n) / math.sqrt (5))
 
+# Time Complexity: O(logn), this is because calculating phi^n takes logn time
+# Auxiliary Space: O(1)
+# ================================================================================================
 
 if __name__ == '__main__':
     n = 9
     # print (fiboRecursive (n))
     # print (fiboDynamic(n))
     # print (fiboSpaceOptimized (n))
-    print (fiboMemoization (n))
+    # print (fiboMemoization (n))
+    print (fiboBinet (n))
