@@ -31,9 +31,32 @@ def fiboSpaceOptimized (n):
         return b
 # Time Complexity: O(n) 
 # Extra Space: O(1)
+# ============================================================================================
+# DP using memoization(Top down approach)
+def fiboMemoization (n):
+    holder = [-1 for i in range (10)]
+    if n <= 1:
+        return n
+    
+    first = second = 0
+    if holder[n-1] is not -1:
+        first = holder[n-1]
+    else:
+        first = fiboMemoization (n-1)
+    
+    if holder[n-2] is not -1:
+        second = holder[n-2]
+    else:
+        second = fiboMemoization (n-2)
+
+    holder[n] = first + second
+    return holder[n]
+# ===============================================================================================
+
 
 if __name__ == '__main__':
     n = 9
     # print (fiboRecursive (n))
     # print (fiboDynamic(n))
-    print (fiboSpaceOptimized (n))
+    # print (fiboSpaceOptimized (n))
+    print (fiboMemoization (n))
