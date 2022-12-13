@@ -35,7 +35,28 @@ def isPrimeEfficientApproach (n):
 
 # Time complexity: O(sqrt(n))
 # Auxiliary space: O(1)
+# ==============================================================================================================================
+# Recursive Approach 
+def isPrimeRecursive (n, i):
+    if n is 0 or n is 1:
+        return False
+
+    if n is i:
+        return True
+
+    if n % i == 0:
+        return False
+
+    i += 1
+    return isPrimeRecursive (n, i)
+
+def isPrimeRecursiveWrapper (n):
+    return isPrimeRecursive (n, 2)
+
+# Time Complexity: O(N)
+# Auxiliary Space: O(N) 
 
 if __name__ == '__main__':
     # print (isPrimeNaiveApproach (4))
-    print (isPrimeEfficientApproach (11))
+    # print (isPrimeEfficientApproach (11))
+    print (isPrimeRecursiveWrapper(5))
