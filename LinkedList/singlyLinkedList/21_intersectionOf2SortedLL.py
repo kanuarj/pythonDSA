@@ -21,8 +21,8 @@
 # intersection list.
 
 class Node:
-    def __init__ (self, val):
-        self.data = val
+    def __init__ (self, data):
+        self.data = data
         self.next = None
 
 def insertion (head, newData):
@@ -60,6 +60,28 @@ def localReferencesMethod (firstLL, secondLL):
 # Only one traversal of the lists are needed.
 # Auxiliary Space: O(max(m, n)). 
 # The output list can store at most m+n nodes.
+# ===============================================================================================================
+# Method : Recursive Solution
+def recursiveSolution (firstLL, secondLL):
+    if (firstLL is None or secondLL is None):
+        return None
+
+    if (firstLL.data < secondLL.data):
+        return recursiveSolution (firstLL.next, secondLL)
+
+    if (firstLL.data > secondLL.data):
+        return recursiveSolution (firstLL, secondLL.next)
+
+    temp = Node (0)
+    temp.data = firstLL.data
+    temp.next = recursiveSolution (firstLL.next, secondLL.next)
+    return temp
+
+# Complexity Analysis: 
+# Time Complexity: O(m+n) where m and n are number of nodes in first and second linked lists respectively. 
+# Only one traversal of the lists are needed.
+# Auxiliary Space: O(max(m, n)). 
+# The output list can store at most m+n nodes.
 
 if __name__ == '__main__':
     firstLL = secondLL = intersectionList = None
@@ -74,5 +96,10 @@ if __name__ == '__main__':
     secondLL = insertion (secondLL, 5)
     traversal (secondLL)
 
-    intersectionList = localReferencesMethod (firstLL, secondLL)
+    # intersectionList = localReferencesMethod (firstLL, secondLL)
+    # traversal (intersectionList)
+
+    intersectionList = recursiveSolution (firstLL, secondLL)
     traversal (intersectionList)
+
+
