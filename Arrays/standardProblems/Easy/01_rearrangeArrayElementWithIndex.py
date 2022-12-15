@@ -61,8 +61,28 @@ def anotherApproach (arr, n):
 # Time Complexity: O(n)
 # Auxiliary Space: O(1)
 
+# ================================================================================================
+# Approach using Set 
+# 1) Store all the numbers present in the array into a Set 
+# 2) Iterate through the length of the array, if the corresponding position element is present in the Set, then set A[i] = i, else A[i] = -1
+
+def usingSet (arr, n):
+    s = set ()
+    for i in range (n):
+        s.add (arr[i])
+
+    for i in range (n):
+        if i in s:
+            arr[i] = i
+        else:
+            arr[i] = -1
+
+# Time Complexity: O(n)
+# Auxiliary Space: O(n)
+
 if __name__ == '__main__':
     arr = [-1, -1, 6, 1, 9, 3, 2, -1, 4, -1]
     # naiveApproach (arr, len(arr))
-    anotherApproach (arr, len(arr))
+    # anotherApproach (arr, len(arr))
+    usingSet (arr, len(arr))
     print (f'The final output array is given by {arr}')
