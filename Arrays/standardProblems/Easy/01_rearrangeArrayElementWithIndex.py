@@ -80,9 +80,25 @@ def usingSet (arr, n):
 # Time Complexity: O(n)
 # Auxiliary Space: O(n)
 
+# ==================================================================================================
+# Approach using Cyclic Sort 
+# 1) Iterate through elements in an array 
+# 2) If arr[i] >= 0 && arr[i] != i, put arr[i] at i ( swap arr[i] with arr[arr[i]])
+
+def usingCycleSort (arr, n, i=0):
+    while i < n:
+        if arr[i] >= 0 and arr[i] is not i:
+            arr[arr[i]], arr[i] = arr[i], arr[arr[i]]
+        else:
+            i += 1
+
+# Time Complexity: O(n)
+# Auxiliary Space: O(1)
+
 if __name__ == '__main__':
     arr = [-1, -1, 6, 1, 9, 3, 2, -1, 4, -1]
     # naiveApproach (arr, len(arr))
     # anotherApproach (arr, len(arr))
-    usingSet (arr, len(arr))
+    # usingSet (arr, len(arr))
+    usingCycleSort (arr, len (arr))
     print (f'The final output array is given by {arr}')
