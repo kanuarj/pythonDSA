@@ -33,7 +33,36 @@ def naiveApproach (arr, n):
 # Time Complexity: O(n^2)
 # Auxiliary Space: O(1), since no extra space has been taken.
 
+# ===================================================================================================
+# Another Approach: 
+# 1. Nav­i­gate through the array. 
+# 2. Check if a[i] = -1, if yes then ignore it. 
+# 3. If a[i] != -1, Check if element a[i] is at its cor­rect posi­tion (i=A[i]). If yes then ignore it. 
+# 4. If a[i] != -1 and ele­ment a[i] is not at its cor­rect posi­tion (i!=A[i]) then place it to its correct posi­tion, but there are two conditions:  
+
+#     Either A[i] is vacate, means A[i] = -1, then just put A[i] = i.
+#     OR A[i] is not vacate, means A[i] = x, then int y=x put A[i] = i. Now, we need to place y to its cor­rect place, so repeat from step 3.
+
+def anotherApproach (arr, n):
+    for i in range (0, n):
+        if arr[i] is not -1 and arr[i] is not i:
+            x = arr[i]
+
+            while (arr[x] is not -1 and arr[x] is not x):
+                y = arr[x]
+                arr[x] = x
+                x = y
+
+            arr[x] = x
+
+            if arr[i] is not i:
+                arr[i] = -1
+
+# Time Complexity: O(n)
+# Auxiliary Space: O(1)
+
 if __name__ == '__main__':
     arr = [-1, -1, 6, 1, 9, 3, 2, -1, 4, -1]
-    naiveApproach (arr, len(arr))
-    print (arr)
+    # naiveApproach (arr, len(arr))
+    anotherApproach (arr, len(arr))
+    print (f'The final output array is given by {arr}')
