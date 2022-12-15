@@ -38,9 +38,24 @@ def partitioningProcedure (arr, n, j = 0):
 
 # Time Complexity: O(N), where N is the size of elements of the input array.
 # Auxiliary Space: O(1)
+# ==================================================================================================================
+# Another Approach :
+# In this approach, we will traverse the whole array and will count the number of zeros present in the array.
+# While counting we will delete the zero from the array.
+# After completing the above process, we will push back the count number of zeros into the array.
+
+def mergingFunction (arr):
+    nonZeroArr = [x for x in arr if x is not 0]
+    zeroArr = [y for y in arr if y is 0]
+    outcomeArr = nonZeroArr + zeroArr
+    return outcomeArr
+
+# Time complexity: O(N), where N is the size of elements of the input array.
+# Auxiliary space: O(1).
 
 if __name__ == '__main__':
     arr = [1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9]
     # pushZeroes (arr, len (arr))
-    partitioningProcedure (arr, len (arr))
-    print (arr)
+    # partitioningProcedure (arr, len (arr))
+    # print (arr)
+    print (mergingFunction (arr))
