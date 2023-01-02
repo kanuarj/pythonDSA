@@ -3,11 +3,12 @@
 # If not increment the left pointer and check again, this will also make changes in the hashset that holds the count of 26 characters
 
 def characterReplacement (s : str, k : int) -> int:
-    count, result, first = {}, 0, 0
+    count, result, first, maxFreq = {}, 0, 0, 0
     for second in range (len (s)):
         count[s[second]] = 1 + count.get (s[second], 0)
+        maxFreq = max (maxFreq, count[s[second]])
         
-        while (second-first+1) - count[s[second]] > k:
+        while (second-first+1) - maxFreq > k:
             count[s[first]] -= 1
             first += 1
 
@@ -15,8 +16,8 @@ def characterReplacement (s : str, k : int) -> int:
     return result
 
 if __name__ == '__main__':
-    s = "AABABBA"
-    k = 1
+    s = "BAAAB"
+    k = 2
     print (characterReplacement (s, k))
     # Input: s = "AABABBA", k = 1
     # Output: 4
