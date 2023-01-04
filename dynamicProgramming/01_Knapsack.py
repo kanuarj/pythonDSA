@@ -18,8 +18,8 @@ def knapsackDPApproach (m, W, P, n):
     return V[n][m]
 
 if __name__ == '__main__':
-    P = [1, 2, 5, 6]
-    W = [2, 3, 4, 5]
+    P = [15, 10, 9, 5]
+    W = [1, 5, 3, 4]
     m = 8
     n = len (W)
     print (knapsackDPApproach (m, W, P, n))
